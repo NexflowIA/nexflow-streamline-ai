@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -57,6 +58,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        nexflow: {
+          purple: "hsl(var(--nexflow-purple))",
+          "purple-deep": "hsl(var(--nexflow-purple-deep))",
+          pink: "hsl(var(--nexflow-pink))",
+          cyan: "hsl(var(--nexflow-cyan))",
+          dark: "hsl(var(--nexflow-dark))",
+        },
+      },
+      fontFamily: {
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "gradient-premium": "var(--gradient-primary)",
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-glow": "var(--gradient-glow)",
+      },
+      boxShadow: {
+        premium: "var(--shadow-premium)",
+        glow: "var(--shadow-glow)",
+        card: "var(--shadow-card)",
       },
       borderRadius: {
         lg: "var(--radius)",
