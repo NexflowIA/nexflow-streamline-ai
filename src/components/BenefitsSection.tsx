@@ -149,11 +149,11 @@ const BenefitsSection = () => {
                 <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
                   <Users className="text-nexflow-purple" size={28} />
                   <h4 className="text-2xl font-bold text-nexflow-dark">
-                    Únete a +100 empresas
+                    Únete al futuro de la automatización
                   </h4>
                 </div>
                 <p className="text-gray-600 mb-6">
-                  Que ya han transformado sus procesos con nuestra tecnología
+                  Miles de empresas ya han transformado sus procesos con IA
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
@@ -186,10 +186,10 @@ const BenefitsSection = () => {
             </div>
             <div className="text-left">
               <p className="font-semibold text-nexflow-dark">
-                +100 empresas satisfechas
+                Revolución empresarial con IA
               </p>
               <p className="text-sm text-gray-600">
-                Promedio 4.9/5 estrellas en satisfacción
+                El 87% de las empresas ya implementan automatización
               </p>
             </div>
           </div>

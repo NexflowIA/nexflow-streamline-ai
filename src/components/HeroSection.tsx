@@ -98,7 +98,7 @@ const HeroSection = () => {
             
             <button
               onClick={scrollToContact}
-              className="btn-glass flex items-center gap-3 group"
+              className="bg-white/20 backdrop-blur-md border-2 border-nexflow-purple text-nexflow-dark px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Mail size={20} />
               Contáctanos por Email
