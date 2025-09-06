@@ -140,7 +140,8 @@ All colors MUST be HSL.
 @layer components {
   /* Premium Button Variants */
   .btn-hero {
-    @apply bg-gradient-to-br from-purple-600 to-pink-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg;
+    background: var(--gradient-primary);
+    @apply text-white px-8 py-4 rounded-2xl font-semibold text-lg;
     box-shadow: var(--shadow-premium);
     transition: var(--transition-smooth);
   }
