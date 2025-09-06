@@ -49,7 +49,7 @@ const SectorsSection = () => {
   ];
 
   return (
-    <section id="sectores" className="section-spacing bg-white">
+    <section id="sectores" className="py-20 bg-white">
       <div className="section-padding max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20">

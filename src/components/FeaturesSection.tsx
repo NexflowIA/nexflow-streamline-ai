@@ -30,7 +30,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="funcionalidades" className="section-spacing bg-gray-50">
+    <section id="funcionalidades" className="py-20 bg-gray-50">
       <div className="section-padding max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20">
