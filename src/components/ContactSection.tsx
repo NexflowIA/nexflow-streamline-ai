@@ -20,6 +20,7 @@ const ContactSection = () => {
     name: "",
     email: "",
     company: "",
+    phone: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,6 +48,7 @@ const ContactSection = () => {
           name: formData.name,
           email: formData.email,
           company: formData.company,
+          phone: formData.phone,
           message: formData.message,
           timestamp: new Date().toISOString(),
         }),
@@ -57,7 +59,7 @@ const ContactSection = () => {
           title: "¡Mensaje enviado!",
           description: "Nos pondremos en contacto contigo pronto.",
         });
-        setFormData({ name: "", email: "", company: "", message: "" });
+        setFormData({ name: "", email: "", company: "", phone: "", message: "" });
       } else {
         throw new Error('Error al enviar el mensaje');
       }
@@ -162,18 +164,34 @@ const ContactSection = () => {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Empresa
-                  </label>
-                  <Input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="h-12 border-2 border-gray-200 focus:border-nexflow-purple transition-colors duration-300"
-                    placeholder="Nombre de tu empresa"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Empresa
+                    </label>
+                    <Input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="h-12 border-2 border-gray-200 focus:border-nexflow-purple transition-colors duration-300"
+                      placeholder="Nombre de tu empresa"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Teléfono
+                    </label>
+                    <Input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="h-12 border-2 border-gray-200 focus:border-nexflow-purple transition-colors duration-300"
+                      placeholder="+34 600 000 000"
+                    />
+                  </div>
                 </div>
 
                 <div>
