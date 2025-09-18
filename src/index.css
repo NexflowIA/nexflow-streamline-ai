@@ -202,7 +202,7 @@ All colors MUST be HSL.
   }
   
   .section-spacing {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 md:py-20 lg:py-24;
   }
 }
 

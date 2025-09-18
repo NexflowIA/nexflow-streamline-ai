@@ -15,10 +15,10 @@ const ParallaxSection = () => {
   }, []);
 
   return (
-    <section className="relative my-20 overflow-hidden">
+    <section className="relative my-12 overflow-hidden">
       {/* Background Container */}
       <div
-        className="relative min-h-screen flex items-center justify-center py-20"
+        className="relative min-h-screen flex items-center justify-center py-16"
         style={{
           backgroundImage: `url(${abstractTechBg})`,
           backgroundSize: "cover",

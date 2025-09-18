@@ -30,10 +30,10 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="funcionalidades" className="py-20 bg-gray-50">
+    <section id="funcionalidades" className="py-12 md:py-16 bg-gray-50">
       <div className="section-padding max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Zap className="text-nexflow-purple animate-pulse" size={32} />
             <h2 className="text-4xl md:text-5xl font-black text-nexflow-dark">

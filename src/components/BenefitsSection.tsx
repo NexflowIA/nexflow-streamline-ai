@@ -56,10 +56,10 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section id="beneficios" className="section-spacing bg-white">
+    <section id="beneficios" className="py-12 md:py-16 lg:py-20 bg-white">
       <div className="section-padding max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <BarChart3 className="text-nexflow-purple animate-pulse" size={32} />
             <h2 className="text-4xl md:text-5xl font-black text-nexflow-dark">

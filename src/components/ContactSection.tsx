@@ -106,10 +106,10 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contacto" className="section-spacing bg-gradient-to-br from-gray-50 to-white">
+    <section id="contacto" className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="section-padding max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-nexflow-dark mb-6">
             Hablemos de tu proyecto
           </h2>
