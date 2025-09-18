@@ -86,7 +86,7 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
             <a
-              href="https://wa.me/34622064070"
+              href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-hero flex items-center gap-3 group"

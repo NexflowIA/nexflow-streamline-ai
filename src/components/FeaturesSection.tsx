@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RefreshCw, Bot, Link, ArrowRight, Zap, Brain, Workflow } from "lucide-react";
+import { RefreshCw, Bot, Link, ArrowRight, Zap, Brain, Workflow, MessageCircle } from "lucide-react";
 
 const FeaturesSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -132,11 +132,12 @@ const FeaturesSection = () => {
             Diseñamos soluciones personalizadas para cada empresa
           </p>
           <a
-            href="https://wa.me/34622064070"
+            href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-hero inline-flex items-center gap-2"
           >
+            <MessageCircle size={18} />
             Consulta tu caso
             <ArrowRight size={18} />
           </a>

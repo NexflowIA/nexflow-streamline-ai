@@ -7,7 +7,8 @@ import {
   ArrowRight,
   Building2,
   Users,
-  TrendingUp 
+  TrendingUp,
+  MessageCircle 
 } from "lucide-react";
 
 const SectorsSection = () => {
@@ -168,11 +169,12 @@ const SectorsSection = () => {
               <strong> diseñamos un flujo de trabajo a medida para tu empresa.</strong>
             </p>
             <a
-              href="https://wa.me/34622064070"
+              href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-hero inline-flex items-center gap-2"
             >
+              <MessageCircle size={18} />
               Consulta tu caso específico
               <ArrowRight size={18} />
             </a>

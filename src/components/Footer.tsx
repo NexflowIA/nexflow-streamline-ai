@@ -61,7 +61,7 @@ const Footer = () => {
                   <Instagram size={20} />
                 </a>
                 <a
-                  href="https://wa.me/34622064070"
+                  href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/10 rounded-xl hover:bg-green-500 hover:scale-110 transition-all duration-300"
@@ -69,7 +69,7 @@ const Footer = () => {
                   <MessageCircle size={20} />
                 </a>
                 <a
-                  href="mailto:info@nexflow.com"
+                  href="mailto:contacto@thenexflow.com"
                   className="p-3 bg-white/10 rounded-xl hover:bg-blue-500 hover:scale-110 transition-all duration-300"
                 >
                   <Mail size={20} />
@@ -134,7 +134,7 @@ const Footer = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
-                  href="https://wa.me/34622064070"
+                  href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-hero flex items-center gap-2"

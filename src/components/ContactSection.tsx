@@ -55,7 +55,7 @@ const ContactSection = () => {
       title: "WhatsApp",
       description: "Respuesta inmediata",
       value: "+34 622 064 070",
-      link: "https://wa.me/34622064070",
+      link: "https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA",
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-50"
     },
@@ -63,8 +63,8 @@ const ContactSection = () => {
       icon: <Mail size={32} />,
       title: "Email",
       description: "Respuesta en 24h",
-      value: "info@nexflow.com",
-      link: "mailto:info@nexflow.com",
+      value: "contacto@thenexflow.com",
+      link: "mailto:contacto@thenexflow.com",
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-50"
     },

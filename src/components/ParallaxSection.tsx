@@ -80,7 +80,7 @@ const ParallaxSection = () => {
             {/* Call to Action */}
             <div className="mt-16">
               <a
-                href="https://wa.me/34622064070"
+                href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-nexflow-purple to-nexflow-pink rounded-2xl text-white font-bold text-xl shadow-2xl hover:shadow-glow hover:scale-105 transition-all duration-500"
