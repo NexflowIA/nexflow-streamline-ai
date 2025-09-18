@@ -1,5 +1,5 @@
 import { MessageCircle, Mail, Instagram, ArrowUp } from "lucide-react";
-import nexflowLogo from "@/assets/nexflow-logo.png";
+import nexflowLogo from "@/assets/logonexflow.png";
 
 const Footer = () => {
   const scrollToTop = () => {

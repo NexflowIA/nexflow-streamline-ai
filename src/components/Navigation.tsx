@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle, Instagram } from "lucide-react";
-import nexflowLogo from "@/assets/nexflow-logo.png";
+import nexflowLogo from "@/assets/logonexflow.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
