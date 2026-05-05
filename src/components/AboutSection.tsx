@@ -114,7 +114,7 @@ const AboutSection = () => {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                 <a
-                  href="https://www.linkedin.com/in/alex-toscano"
+                  href="https://www.linkedin.com/in/alex-toscano-965265279/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white/75 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 text-sm font-medium group"
