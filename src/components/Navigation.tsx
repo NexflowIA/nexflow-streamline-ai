@@ -7,6 +7,7 @@ const navItems = [
   { href: "#soluciones", label: "Soluciones" },
   { href: "#como-trabajamos", label: "Proceso" },
   { href: "#packs", label: "Precios" },
+  { href: "#sobre-nexflow", label: "Sobre Nexflow" },
   { href: "#faq", label: "FAQ" },
 ];
 
