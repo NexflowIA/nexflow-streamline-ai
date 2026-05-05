@@ -5,6 +5,7 @@ import nexflowLogo from "@/assets/logonexflow.png";
 const navItems = [
   { href: "#inicio", label: "Inicio" },
   { href: "#soluciones", label: "Soluciones" },
+  { href: "#casos-de-uso", label: "Casos de uso" },
   { href: "#como-trabajamos", label: "Proceso" },
   { href: "#packs", label: "Precios" },
   { href: "#sobre-nexflow", label: "Sobre Nexflow" },
