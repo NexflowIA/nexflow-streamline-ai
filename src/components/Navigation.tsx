@@ -1,34 +1,27 @@
 import { useState, useEffect } from "react";
-import { Menu, X, MessageCircle, Instagram } from "lucide-react";
+import { Menu, X, Instagram, MessageCircle } from "lucide-react";
 import nexflowLogo from "@/assets/logonexflow.png";
+
+const navItems = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#soluciones", label: "Soluciones" },
+  { href: "#como-trabajamos", label: "Proceso" },
+  { href: "#packs", label: "Precios" },
+  { href: "#faq", label: "FAQ" },
+];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#funcionalidades", label: "Funcionalidades" },
-    { href: "#sectores", label: "Sectores" },
-    { href: "#beneficios", label: "Beneficios" },
-    { href: "#sobre-nexflow", label: "Sobre Nexflow" },
-    { href: "#contacto", label: "Contacto" },
-  ];
-
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
 
@@ -36,113 +29,110 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-premium border-b border-white/20"
+          ? "bg-[#04081a]/90 backdrop-blur-lg border-b border-white/[0.06] shadow-lg"
           : "bg-transparent"
       }`}
     >
-      <div className="section-padding">
+      <div className="px-6 md:px-12 lg:px-24">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <button
+            onClick={() => scrollToSection("#inicio")}
+            className="flex items-center gap-3 group"
+          >
             <img
               src={nexflowLogo}
-              alt="NEXFLOW Logo"
-              className="h-12 w-12 animate-glow"
+              alt="Nexflow"
+              className="h-10 w-10 animate-glow"
             />
-            <span className={`text-2xl font-black tracking-tight transition-colors duration-300 ${
-              isScrolled ? "text-nexflow-dark" : "text-white"
-            }`}>
+            <span className="text-xl font-black tracking-tight text-white group-hover:text-purple-300 transition-colors duration-300">
               NEXFLOW
             </span>
-          </div>
+          </button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className={`font-medium transition-all duration-300 hover:scale-105 relative group ${
-                  isScrolled ? "text-gray-700 hover:text-nexflow-purple" : "text-white/90 hover:text-white"
-                }`}
+                className="text-white/65 hover:text-white font-medium text-sm transition-all duration-300 relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-nexflow-purple transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-purple-400 transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>
 
-          {/* Social Links & CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop CTAs */}
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="https://www.instagram.com/the.nexflow"
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-2 rounded-full transition-all duration-300 hover:scale-110 ${
-                isScrolled ? "text-gray-600 hover:text-nexflow-purple" : "text-white/80 hover:text-white"
-              }`}
+              className="p-2 text-white/50 hover:text-white transition-colors duration-300"
             >
-              <Instagram size={20} />
+              <Instagram size={18} />
             </a>
-            <a
-              href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-hero flex items-center gap-2"
+            <button
+              onClick={() => scrollToSection("#diagnostico")}
+              className="btn-hero flex items-center gap-2 text-sm px-5 py-3"
             >
-              <MessageCircle size={18} />
-              WhatsApp
-            </a>
+              Diagnóstico gratis
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? "text-gray-700" : "text-white"
-            }`}
+            className="lg:hidden p-2 text-white/70 hover:text-white transition-colors duration-300"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <div
-        className={`lg:hidden transition-all duration-500 overflow-hidden ${
+        className={`lg:hidden transition-all duration-400 overflow-hidden ${
           isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-white/95 backdrop-blur-md border-t border-white/20 section-padding py-6">
+        <div className="bg-[#04081a]/95 backdrop-blur-lg border-t border-white/[0.06] px-6 py-6">
           <div className="flex flex-col gap-4">
             {navItems.map((item, index) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-left text-gray-700 hover:text-nexflow-purple font-medium transition-colors duration-300 animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="text-left text-white/65 hover:text-white font-medium transition-colors duration-300 animate-slide-up text-sm"
+                style={{ animationDelay: `${index * 80}ms` }}
               >
                 {item.label}
               </button>
             ))}
-            <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
+            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
               <a
                 href="https://www.instagram.com/the.nexflow"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-600 hover:text-nexflow-purple transition-colors duration-300"
+                className="p-2 text-white/50 hover:text-white transition-colors duration-300"
               >
-                <Instagram size={20} />
+                <Instagram size={18} />
               </a>
               <a
                 href="https://wa.me/34622064070"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-hero flex items-center gap-2 flex-1 justify-center"
+                className="p-2 text-white/50 hover:text-green-400 transition-colors duration-300"
               >
                 <MessageCircle size={18} />
-                WhatsApp
               </a>
+              <button
+                onClick={() => scrollToSection("#diagnostico")}
+                className="btn-hero flex-1 justify-center flex items-center text-sm py-3"
+              >
+                Diagnóstico gratis
+              </button>
             </div>
           </div>
         </div>

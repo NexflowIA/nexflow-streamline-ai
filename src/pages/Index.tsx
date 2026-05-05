@@ -1,10 +1,11 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import ParallaxSection from "@/components/ParallaxSection";
-import SectorsSection from "@/components/SectorsSection";
-import BenefitsSection from "@/components/BenefitsSection";
-import ContactSection from "@/components/ContactSection";
+import ProblemsSection from "@/components/BenefitsSection";
+import SolutionsSection from "@/components/FeaturesSection";
+import HowWeWorkSection from "@/components/ParallaxSection";
+import PacksSection from "@/components/SectorsSection";
+import LeadFormSection from "@/components/ContactSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -12,11 +13,12 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
-      <FeaturesSection />
-      <ParallaxSection />
-      <SectorsSection />
-      <BenefitsSection />
-      <ContactSection />
+      <ProblemsSection />
+      <SolutionsSection />
+      <HowWeWorkSection />
+      <PacksSection />
+      <LeadFormSection />
+      <FAQSection />
       <Footer />
     </div>
   );

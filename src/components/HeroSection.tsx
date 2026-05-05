@@ -1,138 +1,134 @@
-import { useState, useEffect } from "react";
-import { ArrowRight, Sparkles, MessageCircle, Mail } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpg";
+import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
-  const [glitchActive, setGlitchActive] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setGlitchActive(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToContact = () => {
-    const element = document.querySelector("#contacto");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `url(${heroBackground})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
+      style={{ background: "linear-gradient(135deg, #020b18 0%, #04081a 50%, #060414 100%)" }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-nexflow-dark/60 via-nexflow-purple/20 to-nexflow-pink/30"></div>
-      
-      {/* Animated particles */}
-      <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
+      {/* Ambient glows */}
+      <div
+        className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={{ background: "hsl(265, 89%, 67%)" }}
+      />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-15 blur-3xl pointer-events-none"
+        style={{ background: "hsl(320, 100%, 74%)" }}
+      />
+
+      {/* Grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(18)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
+            className="absolute rounded-full animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
+              width: `${2 + (i % 3)}px`,
+              height: `${2 + (i % 3)}px`,
+              left: `${(i * 17 + 7) % 100}%`,
+              top: `${(i * 23 + 11) % 100}%`,
+              background:
+                i % 3 === 0
+                  ? "hsl(265,89%,67%)"
+                  : i % 3 === 1
+                  ? "hsl(320,100%,74%)"
+                  : "hsl(190,100%,70%)",
+              opacity: 0.35 + (i % 4) * 0.1,
+              animationDelay: `${(i * 0.7) % 6}s`,
+              animationDuration: `${5 + (i % 4)}s`,
             }}
           />
         ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center section-padding max-w-6xl mx-auto">
-        <div className="blur-overlay rounded-3xl p-12 md:p-16 lg:p-20 animate-fade-scale">
-          {/* Main Title with Glitch Effect */}
-          <h1
-            className={`glitch-text mb-6 transition-all duration-500 ${
-              glitchActive ? "animate-pulse" : ""
-            }`}
-          >
-            NEXFLOW
-          </h1>
-          
-          {/* Subtitle */}
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 text-gradient animate-slide-up">
-            Automatización con inteligencia.
-            <br />
-            Sin complicaciones.
-          </h2>
-          
-          {/* Description */}
-          <p className="text-xl md:text-2xl text-gray-700 mb-4 font-medium animate-slide-up max-w-3xl mx-auto">
-            ¿Tu empresa sigue atascada en tareas repetitivas?
-          </p>
-          
-          <div className="flex items-center justify-center gap-2 mb-12 animate-slide-up">
-            <Sparkles className="text-nexflow-purple animate-pulse" size={24} />
-            <p className="text-lg text-gray-600">
-              Transformamos tu negocio con IA y automatización inteligente
-            </p>
-            <Sparkles className="text-nexflow-pink animate-pulse" size={24} />
-          </div>
+      <div className="relative z-10 text-center px-6 md:px-12 lg:px-24 max-w-5xl mx-auto pt-24 pb-32">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-10 animate-fade-scale">
+          <Sparkles size={13} className="text-purple-400" />
+          <span className="text-sm text-white/65 font-medium tracking-wide">
+            Automatización con IA para empresas
+          </span>
+          <Sparkles size={13} className="text-pink-400" />
+        </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
-            <a
-              href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-hero flex items-center gap-3 group"
-            >
-              <MessageCircle size={22} />
-              Habla con nosotros por WhatsApp
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
-            
-            <button
-              onClick={scrollToContact}
-              className="bg-white/20 backdrop-blur-md border-2 border-nexflow-purple text-nexflow-dark px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Mail size={20} />
-              Contáctanos por Email
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
-          </div>
+        {/* Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] mb-7 animate-slide-up">
+          Automatiza procesos de
+          <br />
+          <span className="text-gradient">tu empresa con IA</span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-xl text-white/55 max-w-3xl mx-auto mb-12 leading-relaxed animate-slide-up">
+          Creamos agentes, asistentes y flujos inteligentes que reducen tareas
+          manuales, responden clientes, generan documentos y conectan tus
+          herramientas.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
+          <button
+            onClick={() => scrollTo("#diagnostico")}
+            className="btn-hero flex items-center gap-3 group"
+          >
+            Solicitar diagnóstico gratuito
+            <ArrowRight
+              size={18}
+              className="group-hover:translate-x-1 transition-transform duration-300"
+            />
+          </button>
+
+          <button
+            onClick={() => scrollTo("#soluciones")}
+            className="btn-glass flex items-center gap-3 group"
+          >
+            Ver casos de uso
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform duration-300"
+            />
+          </button>
+        </div>
+
+        {/* Trust pills */}
+        <div className="mt-14 flex items-center justify-center gap-6 flex-wrap animate-fade-scale">
+          {[
+            "Sin cambiar tus herramientas",
+            "Primera consulta gratis",
+            "Resultados en semanas",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-2 text-white/40 text-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+              {item}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-        <svg
-          className="relative block w-full h-24"
-          viewBox="0 0 1440 120"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="hsl(var(--nexflow-purple))" stopOpacity="0.3" />
-              <stop offset="50%" stopColor="hsl(var(--nexflow-pink))" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="hsl(var(--nexflow-cyan))" stopOpacity="0.3" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#waveGradient)"
-            d="M0,60 C480,120 960,0 1440,60 L1440,120 L0,120 Z"
-            className="animate-pulse"
-          />
-          <path
-            fill="white"
-            d="M0,80 C480,140 960,20 1440,80 L1440,120 L0,120 Z"
-          />
-        </svg>
-      </div>
+      {/* Scroll indicator */}
+      <button
+        onClick={() => scrollTo("#problemas")}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/25 hover:text-white/50 transition-colors duration-300 animate-bounce"
+        aria-label="Siguiente sección"
+      >
+        <ChevronDown size={28} />
+      </button>
     </section>
   );
 };

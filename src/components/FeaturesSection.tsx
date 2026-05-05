@@ -1,150 +1,117 @@
-import { useState } from "react";
-import { RefreshCw, Bot, Link, ArrowRight, Zap, Brain, Workflow, MessageCircle } from "lucide-react";
+import { Mail, FileText, Headphones, BookOpen, TrendingUp, GitMerge, ArrowRight } from "lucide-react";
 
-const FeaturesSection = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+const solutions = [
+  {
+    icon: <Mail size={28} />,
+    title: "Automatización de emails",
+    description:
+      "Respuestas automáticas, seguimientos programados y clasificación inteligente de tu bandeja de entrada.",
+    gradient: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: <FileText size={28} />,
+    title: "Generación de documentos",
+    description:
+      "Contratos, presupuestos e informes generados al instante desde plantilla y datos de tu CRM.",
+    gradient: "from-purple-500 to-violet-600",
+  },
+  {
+    icon: <Headphones size={28} />,
+    title: "Copilotos para soporte IT",
+    description:
+      "Asistentes internos que resuelven tickets técnicos repetitivos sin intervención humana.",
+    gradient: "from-emerald-500 to-teal-600",
+  },
+  {
+    icon: <BookOpen size={28} />,
+    title: "Chatbots sobre documentación",
+    description:
+      "Tu equipo pregunta en lenguaje natural y el chatbot encuentra la respuesta en tus manuales y políticas.",
+    gradient: "from-orange-500 to-amber-500",
+  },
+  {
+    icon: <TrendingUp size={28} />,
+    title: "Automatización comercial y CRM",
+    description:
+      "Pipeline de ventas actualizado solo, seguimientos automáticos y cualificación de leads con IA.",
+    gradient: "from-pink-500 to-rose-600",
+  },
+  {
+    icon: <GitMerge size={28} />,
+    title: "Workflows entre herramientas",
+    description:
+      "Conectamos CRM, ERP, email, hojas de cálculo y formularios para que los datos fluyan sin fricción.",
+    gradient: "from-indigo-500 to-purple-600",
+  },
+];
 
-  const features = [
-    {
-      icon: <RefreshCw size={48} />,
-      title: "Automatización de Procesos Repetitivos",
-      description: "Eliminamos tareas repetitivas como facturación, gestión de correos o entrada de datos usando RPA e inteligencia artificial.",
-      color: "from-purple-500 to-indigo-600",
-      link: "https://thenexflow.com/procesos-repetitivos/",
-      highlights: ["RPA Inteligente", "Procesamiento de Documentos", "Workflow Automation"]
-    },
-    {
-      icon: <Bot size={48} />,
-      title: "Chatbots y Asistentes Virtuales",
-      description: "Implementamos chatbots que responden automáticamente a tus clientes o empleados en WhatsApp, web o email.",
-      color: "from-indigo-500 to-purple-600",
-      highlights: ["AI Conversacional", "Multicanal", "Aprendizaje Continuo"]
-    },
-    {
-      icon: <Link size={48} />,
-      title: "Integraciones con APIs y CRMs",
-      description: "Automatizamos el flujo de información entre tus plataformas (CRM, hojas de cálculo, formularios, emails).",
-      color: "from-purple-600 to-pink-600",
-      highlights: ["Sincronización en Tiempo Real", "CRM Integration", "Data Pipeline"]
-    },
-  ];
+const SolutionsSection = () => {
+  const scrollToForm = () => {
+    document.querySelector("#diagnostico")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section id="funcionalidades" className="py-12 md:py-16 bg-gray-50">
-      <div className="section-padding max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Zap className="text-nexflow-purple animate-pulse" size={32} />
-            <h2 className="text-4xl md:text-5xl font-black text-nexflow-dark">
-              Funcionalidades
-            </h2>
-            <Brain className="text-nexflow-pink animate-pulse" size={32} />
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Descubre cómo nuestras soluciones de IA transforman tu negocio
+    <section
+      id="soluciones"
+      className="py-20 md:py-28"
+      style={{ background: "#04081a" }}
+    >
+      <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="inline-block text-xs font-bold tracking-widest text-purple-400 uppercase mb-4">
+            Soluciones
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
+            Lo que creamos para ti
+          </h2>
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
+            Cada automatización está diseñada para un caso de negocio real, no
+            para una demo.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {solutions.map((solution, index) => (
             <div
               key={index}
-              className="group relative"
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
+              className="group relative p-7 rounded-2xl border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.11] hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Main Card */}
-              <div className="card-premium h-full relative overflow-hidden">
-                {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
-                {/* Icon */}
-                <div className="flex justify-center mb-6">
-                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${feature.color} text-white shadow-glow group-hover:scale-110 transition-transform duration-500`}>
-                    {feature.icon}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-nexflow-dark mb-4 group-hover:text-nexflow-purple transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {feature.description}
-                </p>
-
-                {/* Highlights */}
-                {feature.highlights && (
-                  <div className="mb-6">
-                    <div className="flex flex-wrap gap-2">
-                      {feature.highlights.map((highlight, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-nexflow-purple/10 text-nexflow-purple text-sm font-medium rounded-full border border-nexflow-purple/20"
-                        >
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Hover Effect - Learn More Button */}
-                <div className={`transition-all duration-500 ${
-                  hoveredCard === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  {feature.link ? (
-                    <a
-                      href={feature.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${feature.color} text-white rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-premium`}
-                    >
-                      Saber más
-                      <ArrowRight size={16} />
-                    </a>
-                  ) : (
-                    <button className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${feature.color} text-white rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-premium`}>
-                      Saber más
-                      <ArrowRight size={16} />
-                    </button>
-                  )}
-                </div>
+              <div
+                className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${solution.gradient} text-white mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+              >
+                {solution.icon}
               </div>
-
-              {/* Floating Elements */}
-              <div className="absolute -top-2 -right-2 w-20 h-20 bg-nexflow-pink/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-nexflow-purple/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <h3 className="text-white font-bold text-lg mb-3 leading-snug">
+                {solution.title}
+              </h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                {solution.description}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-2 text-nexflow-purple">
-            <Workflow size={24} />
-            <span className="text-lg font-semibold">¿No ves tu caso específico?</span>
-          </div>
-          <p className="text-gray-600 mt-2 mb-6">
-            Diseñamos soluciones personalizadas para cada empresa
+        <div className="mt-12 text-center">
+          <p className="text-white/35 mb-5 text-sm">
+            ¿Tu caso no aparece aquí? Diseñamos soluciones a medida.
           </p>
-          <a
-            href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-hero inline-flex items-center gap-2"
+          <button
+            onClick={scrollToForm}
+            className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
           >
-            <MessageCircle size={18} />
-            Consulta tu caso
-            <ArrowRight size={18} />
-          </a>
+            Cuéntanos tu proceso
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform duration-300"
+            />
+          </button>
         </div>
       </div>
     </section>
   );
 };
 
-export default FeaturesSection;
+export default SolutionsSection;

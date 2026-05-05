@@ -1,123 +1,103 @@
-import { useEffect, useState } from "react";
-import { Sparkles, Zap, Bot } from "lucide-react";
-import abstractTechBg from "@/assets/abstract-tech-bg.jpg";
+import { Search, Paintbrush2, Bot, FlaskConical, BookMarked } from "lucide-react";
 
-const ParallaxSection = () => {
-  const [scrollY, setScrollY] = useState(0);
+const steps = [
+  {
+    number: "01",
+    icon: <Search size={22} />,
+    title: "Analizamos tu proceso",
+    description:
+      "Mapeamos el flujo actual, identificamos los cuellos de botella y calculamos el tiempo recuperable por semana.",
+  },
+  {
+    number: "02",
+    icon: <Paintbrush2 size={22} />,
+    title: "Diseñamos el flujo",
+    description:
+      "Proponemos la arquitectura: qué herramientas conectar, qué modelo de IA usar y cómo encaja con lo que ya tienes.",
+  },
+  {
+    number: "03",
+    icon: <Bot size={22} />,
+    title: "Creamos el agente o automatización",
+    description:
+      "Desarrollo real. Sin plantillas genéricas. Construimos el flujo, el agente o el chatbot adaptado a tu empresa.",
+  },
+  {
+    number: "04",
+    icon: <FlaskConical size={22} />,
+    title: "Probamos con casos reales",
+    description:
+      "Validamos con datos y escenarios de tu negocio antes de entregar. Sin sorpresas cuando pase a producción.",
+  },
+  {
+    number: "05",
+    icon: <BookMarked size={22} />,
+    title: "Lo dejamos documentado y mantenible",
+    description:
+      "Documentación técnica y funcional incluida. Tu equipo puede entenderlo, modificarlo y mantenerlo sin depender de nosotros.",
+  },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+const HowWeWorkSection = () => {
   return (
-    <section className="relative my-12 overflow-hidden">
-      {/* Background Container */}
+    <section
+      id="como-trabajamos"
+      className="py-20 md:py-28 relative overflow-hidden"
+      style={{ background: "#06091c" }}
+    >
+      {/* Background accent */}
       <div
-        className="relative min-h-screen flex items-center justify-center py-16"
-        style={{
-          backgroundImage: `url(${abstractTechBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        {/* Dark Overlay for Better Readability */}
-        <div className="absolute inset-0 bg-black/60"></div>
-        
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-nexflow-purple/40 via-transparent to-nexflow-pink/40"></div>
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-[600px] opacity-8 blur-3xl pointer-events-none"
+        style={{ background: "hsl(265, 89%, 67%)" }}
+      />
 
-        {/* Main Content */}
-        <div className="relative z-20 max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="text-center space-y-12">
-            
-            {/* Main Headlines */}
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-tight">
-                EL CAMBIO YA HA
-              </h1>
-              
-              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black">
-                <span className="bg-gradient-to-r from-nexflow-purple via-nexflow-pink to-white bg-clip-text text-transparent">
-                  EMPEZADO
-                </span>
-              </h1>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-8">
-                ¿TE UNES?
-              </h2>
-            </div>
-
-            {/* Tech Cards */}
-            <div className="flex flex-wrap justify-center gap-6 mt-16">
-              {[
-                { icon: Bot, label: "AI", description: "Inteligencia Artificial" },
-                { icon: Zap, label: "RPA", description: "Automatización de Procesos" },
-                { icon: Sparkles, label: "ML", description: "Machine Learning" }
-              ].map((tech, i) => (
-                <div
-                  key={tech.label}
-                  className="group relative transform hover:scale-105 transition-all duration-500"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                >
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-center hover:bg-white/20 transition-all duration-500 cursor-pointer min-w-[200px]">
-                    <tech.icon className="w-12 h-12 text-white mx-auto mb-4" />
-                    <h3 className="text-white font-bold text-2xl mb-2">{tech.label}</h3>
-                    <p className="text-white/80 text-sm">{tech.description}</p>
-                  </div>
-                  
-                  {/* Glow effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-nexflow-purple to-nexflow-pink rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500 -z-10"></div>
-                </div>
-              ))}
-            </div>
-
-            {/* Call to Action */}
-            <div className="mt-16">
-              <a
-                href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-nexflow-purple to-nexflow-pink rounded-2xl text-white font-bold text-xl shadow-2xl hover:shadow-glow hover:scale-105 transition-all duration-500"
-              >
-                <Sparkles className="w-6 h-6" />
-                <span>¡Únete al cambio!</span>
-                <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
+      <div className="px-6 md:px-12 lg:px-24 max-w-4xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="inline-block text-xs font-bold tracking-widest text-purple-400 uppercase mb-4">
+            Proceso
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
+            Cómo trabajamos
+          </h2>
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
+            Un proceso estructurado para que la automatización encaje en tu
+            empresa desde el primer día.
+          </p>
         </div>
 
-        {/* Floating Animation Elements */}
-        <div className="absolute inset-0 pointer-events-none z-10">
-          {[...Array(12)].map((_, i) => (
+        {/* Steps */}
+        <div className="space-y-4">
+          {steps.map((step, index) => (
             <div
-              key={i}
-              className="absolute animate-float"
-              style={{
-                left: `${10 + Math.random() * 80}%`,
-                top: `${10 + Math.random() * 80}%`,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${8 + Math.random() * 4}s`,
-              }}
+              key={index}
+              className="group flex items-start gap-5 p-6 md:p-7 rounded-2xl border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] hover:border-purple-500/20 transition-all duration-300"
             >
-              <div className="w-2 h-2 bg-white/20 rounded-full"></div>
+              {/* Step number + icon */}
+              <div className="flex-shrink-0 flex flex-col items-center gap-1.5">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/25 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/25 transition-colors duration-300">
+                  {step.icon}
+                </div>
+                <span className="text-white/20 text-[10px] font-mono font-bold tracking-widest">
+                  {step.number}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="pt-1">
+                <h3 className="text-white font-bold text-lg mb-1.5">
+                  {step.title}
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Bottom Separator */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white via-white/90 to-transparent"></div>
     </section>
   );
 };
 
-export default ParallaxSection;
+export default HowWeWorkSection;

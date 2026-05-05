@@ -1,197 +1,105 @@
-import { 
-  TrendingUp, 
-  Clock, 
-  DollarSign, 
-  Users, 
-  Zap, 
-  Shield,
-  BarChart3,
-  CheckCircle2,
-  ArrowRight 
-} from "lucide-react";
+import { Mail, Clock, Ticket, FileText, GitMerge, ArrowRight } from "lucide-react";
 
-const BenefitsSection = () => {
-  const benefits = [
-    {
-      icon: <Clock size={36} />,
-      title: "Ahorro de Tiempo",
-      description: "Automatiza hasta el 80% de tareas repetitivas",
-      metric: "80%",
-      detail: "Menos tiempo en tareas manuales",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: <DollarSign size={36} />,
-      title: "Reducción de Costes",
-      description: "ROI visible desde el primer mes",
-      metric: "40%",
-      detail: "Reducción promedio de costes operativos",
-      color: "from-green-500 to-teal-500"
-    },
-    {
-      icon: <TrendingUp size={36} />,
-      title: "Mayor Productividad",
-      description: "Tu equipo se enfoca en tareas estratégicas",
-      metric: "3x",
-      detail: "Aumento en productividad",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: <Shield size={36} />,
-      title: "Reducción de Errores",
-      description: "Procesos perfectos, sin errores humanos",
-      metric: "95%",
-      detail: "Menos errores en procesos automatizados",
-      color: "from-orange-500 to-red-500"
-    }
-  ];
+const problems = [
+  {
+    icon: <Mail size={26} />,
+    title: "Demasiados emails manuales",
+    description:
+      "Respuestas repetitivas, seguimientos que se pierden, tiempo enterrado en la bandeja de entrada.",
+  },
+  {
+    icon: <Clock size={26} />,
+    title: "Presupuestos lentos",
+    description:
+      "Generar un presupuesto tarda horas porque implica copiar datos de varios sitios y reformatearlos.",
+  },
+  {
+    icon: <Ticket size={26} />,
+    title: "Tickets repetitivos",
+    description:
+      "El equipo de soporte responde las mismas 20 preguntas todos los días sin ningún valor añadido.",
+  },
+  {
+    icon: <FileText size={26} />,
+    title: "Documentos dispersos",
+    description:
+      "Contratos, informes y fichas en carpetas distintas, sin control de versiones ni búsqueda rápida.",
+  },
+  {
+    icon: <GitMerge size={26} />,
+    title: "Datos duplicados entre herramientas",
+    description:
+      "CRM, hoja de cálculo, email y ERP no hablan entre sí. Los datos se desincronizán constantemente.",
+  },
+];
 
-  const features = [
-    "Implementación rápida (2-4 semanas)",
-    "Soporte técnico 24/7",
-    "Actualizaciones automáticas",
-    "Integración con sistemas existentes",
-    "Escalabilidad garantizada",
-    "Reporting en tiempo real"
-  ];
+const ProblemsSection = () => {
+  const scrollToForm = () => {
+    document.querySelector("#diagnostico")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section id="beneficios" className="py-12 md:py-16 lg:py-20 bg-white">
-      <div className="section-padding max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <BarChart3 className="text-nexflow-purple animate-pulse" size={32} />
-            <h2 className="text-4xl md:text-5xl font-black text-nexflow-dark">
-              Beneficios Reales
-            </h2>
-            <Zap className="text-nexflow-pink animate-pulse" size={32} />
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Resultados medibles que transforman tu negocio desde el primer día
+    <section
+      id="problemas"
+      className="py-20 md:py-28"
+      style={{ background: "#06091c" }}
+    >
+      <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="inline-block text-xs font-bold tracking-widest text-purple-400 uppercase mb-4">
+            El problema
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
+            ¿Te suena algo de esto?
+          </h2>
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
+            Estos bloqueos operativos cuestan horas cada semana y frenan el
+            crecimiento de tu empresa.
           </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {benefits.map((benefit, index) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {problems.map((problem, index) => (
             <div
               key={index}
-              className="group relative"
+              className="group relative p-7 rounded-2xl border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] hover:border-red-500/25 transition-all duration-300 cursor-default"
             >
-              <div className="card-premium text-center h-full relative overflow-hidden">
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
-                {/* Icon */}
-                <div className="flex justify-center mb-6">
-                  <div className={`p-4 rounded-3xl bg-gradient-to-br ${benefit.color} text-white shadow-glow group-hover:scale-110 transition-transform duration-500`}>
-                    {benefit.icon}
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-3 rounded-xl bg-red-500/10 text-red-400 group-hover:bg-red-500/18 transition-colors duration-300">
+                  {problem.icon}
                 </div>
-
-                {/* Metric */}
-                <div className={`text-4xl font-black mb-2 bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent`}>
-                  {benefit.metric}
+                <div>
+                  <h3 className="text-white font-bold text-base mb-2 leading-snug">
+                    {problem.title}
+                  </h3>
+                  <p className="text-white/48 text-sm leading-relaxed">
+                    {problem.description}
+                  </p>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-nexflow-dark mb-3 group-hover:text-nexflow-purple transition-colors duration-300">
-                  {benefit.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 mb-4">
-                  {benefit.description}
-                </p>
-
-                {/* Detail */}
-                <p className="text-sm text-gray-500 font-medium">
-                  {benefit.detail}
-                </p>
-
-                {/* Decorative Elements */}
-                <div className={`absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br ${benefit.color} opacity-10 rounded-full blur-xl group-hover:opacity-20 transition-opacity duration-500`}></div>
               </div>
             </div>
           ))}
-        </div>
 
-        {/* Features List */}
-        <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-12 border border-gray-100">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Features */}
-            <div>
-              <h3 className="text-3xl font-bold text-nexflow-dark mb-8">
-                ¿Por qué elegir NEXFLOW?
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 animate-slide-up"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex-shrink-0">
-                      <CheckCircle2 className="text-green-500" size={20} />
-                    </div>
-                    <span className="text-gray-700 font-medium">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="text-center lg:text-left">
-              <div className="bg-gradient-to-br from-nexflow-purple/10 to-nexflow-pink/10 rounded-2xl p-8 border border-nexflow-purple/20">
-                <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-                  <Users className="text-nexflow-purple" size={28} />
-                  <h4 className="text-2xl font-bold text-nexflow-dark">
-                    Únete al futuro de la automatización
-                  </h4>
-                </div>
-                <p className="text-gray-600 mb-6">
-                  Miles de empresas ya han transformado sus procesos con IA
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-hero flex items-center gap-2 justify-center"
-                  >
-                    Solicitar demo gratuita
-                    <ArrowRight size={18} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Success Stories Teaser */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-nexflow-purple/10 to-nexflow-pink/10 rounded-2xl border border-nexflow-purple/20">
-            <div className="flex -space-x-3">
-              {[...Array(4)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br from-nexflow-purple to-nexflow-pink border-2 border-white flex items-center justify-center text-white font-bold text-sm`}
-                >
-                  {String.fromCharCode(65 + i)}
-                </div>
-              ))}
-            </div>
-            <div className="text-left">
-              <p className="font-semibold text-nexflow-dark">
-                Revolución empresarial con IA
-              </p>
-              <p className="text-sm text-gray-600">
-                El 87% de las empresas ya implementan automatización
-              </p>
-            </div>
+          {/* CTA card */}
+          <div className="p-7 rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-pink-500/8 flex flex-col justify-center">
+            <p className="text-white/65 text-sm leading-relaxed mb-5">
+              Si reconoces más de dos de estos problemas,{" "}
+              <strong className="text-white font-semibold">
+                ya tienes potencial real para automatizar.
+              </strong>
+            </p>
+            <button
+              onClick={scrollToForm}
+              className="inline-flex items-center gap-2 text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors duration-200 group"
+            >
+              Pide tu diagnóstico gratuito
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-1 transition-transform duration-300"
+              />
+            </button>
           </div>
         </div>
       </div>
@@ -199,4 +107,4 @@ const BenefitsSection = () => {
   );
 };
 
-export default BenefitsSection;
+export default ProblemsSection;

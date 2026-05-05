@@ -1,188 +1,173 @@
-import { useState } from "react";
-import { 
-  UtensilsCrossed, 
-  ClipboardList, 
-  Rocket, 
-  Truck, 
-  ArrowRight,
-  Building2,
-  Users,
-  TrendingUp,
-  MessageCircle 
-} from "lucide-react";
+import { Check, Zap, Sparkles, Building2, ArrowRight } from "lucide-react";
 
-const SectorsSection = () => {
-  const [hoveredSector, setHoveredSector] = useState<number | null>(null);
+const packs = [
+  {
+    name: "Starter",
+    price: "490 €",
+    priceLabel: "desde",
+    tagline: "Para probar sin riesgo.",
+    description:
+      "Una automatización concreta, bien hecha y entregada en 1-2 semanas.",
+    icon: <Zap size={22} />,
+    gradient: "from-blue-500 to-cyan-400",
+    border: "border-white/[0.08]",
+    highlighted: false,
+    features: [
+      "1 automatización a medida",
+      "Análisis del proceso incluido",
+      "Integración con herramientas existentes",
+      "Documentación entregada",
+      "1 mes de soporte post-entrega",
+    ],
+    cta: "Empezar con Starter",
+  },
+  {
+    name: "Pro",
+    price: "1.500 €",
+    priceLabel: "desde",
+    tagline: "Para automatizar un área entera.",
+    description:
+      "Comercial, soporte o backoffice: varias automatizaciones + un agente o chatbot.",
+    icon: <Sparkles size={22} />,
+    gradient: "from-purple-500 to-pink-500",
+    border: "border-purple-500/35",
+    highlighted: true,
+    features: [
+      "Hasta 4 automatizaciones",
+      "Agente o chatbot incluido",
+      "Integraciones con CRM/ERP",
+      "Panel de monitorización básico",
+      "3 meses de soporte y ajustes",
+    ],
+    cta: "Empezar con Pro",
+  },
+  {
+    name: "Empresa",
+    price: "3.000 €",
+    priceLabel: "desde",
+    tagline: "Transformación operativa real.",
+    description:
+      "Múltiples flujos, agentes internos y externos, formación del equipo y soporte continuo.",
+    icon: <Building2 size={22} />,
+    gradient: "from-emerald-500 to-teal-500",
+    border: "border-white/[0.08]",
+    highlighted: false,
+    features: [
+      "Automatizaciones ilimitadas en el proyecto",
+      "Agentes internos y externos",
+      "Formación al equipo incluida",
+      "Infraestructura y hosting si se requiere",
+      "Soporte y mantenimiento anual",
+    ],
+    cta: "Solicitar propuesta",
+  },
+];
 
-  const sectors = [
-    {
-      icon: <UtensilsCrossed size={40} />,
-      title: "Restauración",
-      description: "Asistentes de reservas 24/7 y optimización de la rotación. Integración de pedidos por WhatsApp y respuestas automáticas a reseñas.",
-      image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&h=400&fit=crop",
-      features: ["Reservas Automáticas", "Gestión de Pedidos", "Atención 24/7"],
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: <ClipboardList size={40} />,
-      title: "Administración",
-      description: "Procesamiento automático de facturas, clasificación inteligente de documentos y generación de informes contables.",
-      image: "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=600&h=400&fit=crop",
-      features: ["OCR Inteligente", "Clasificación Automática", "Informes en Tiempo Real"],
-      color: "from-blue-500 to-indigo-500"
-    },
-    {
-      icon: <Rocket size={40} />,
-      title: "Startups/Retail",
-      description: "Atención al cliente 24/7 con chatbots entrenados en productos y FAQs, inventarios, campañas personalizadas y seguimiento postventa.",
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&h=400&fit=crop",
-      features: ["E-commerce Bot", "Personalización", "Marketing Automation"],
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: <Truck size={40} />,
-      title: "Logística/Transporte",
-      description: "Optimización de rutas, seguimiento automático de pedidos y procesamiento de documentos (albaranes, facturas...).",
-      image: "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=600&h=400",
-      features: ["Optimización de Rutas", "Tracking Automático", "Gestión Documental"],
-      color: "from-green-500 to-teal-500"
-    }
-  ];
+const PacksSection = () => {
+  const scrollToForm = () => {
+    document.querySelector("#diagnostico")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section id="sectores" className="py-12 md:py-16 bg-white">
-      <div className="section-padding max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Building2 className="text-nexflow-purple animate-pulse" size={32} />
-            <h2 className="text-4xl md:text-5xl font-black text-nexflow-dark">
-              Casos Prácticos Por Sector
-            </h2>
-            <Users className="text-nexflow-pink animate-pulse" size={32} />
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluciones específicas adaptadas a las necesidades de cada industria
+    <section
+      id="packs"
+      className="py-20 md:py-28"
+      style={{ background: "#04081a" }}
+    >
+      <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="inline-block text-xs font-bold tracking-widest text-purple-400 uppercase mb-4">
+            Precios
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
+            Elige tu punto de entrada
+          </h2>
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
+            Sin contrato de permanencia. Sin licencias ocultas. Pagas por el
+            trabajo entregado.
           </p>
         </div>
 
-        {/* Sectors Grid */}
-        <div className="space-y-16">
-          {sectors.map((sector, index) => (
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          {packs.map((pack) => (
             <div
-              key={index}
-              className={`flex flex-col lg:flex-row items-center gap-12 ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-              onMouseEnter={() => setHoveredSector(index)}
-              onMouseLeave={() => setHoveredSector(null)}
+              key={pack.name}
+              className={`relative flex flex-col p-8 rounded-2xl border ${pack.border} ${
+                pack.highlighted
+                  ? "bg-gradient-to-br from-purple-500/12 to-pink-500/8"
+                  : "bg-white/[0.03]"
+              } hover:-translate-y-1 hover:border-white/20 transition-all duration-300`}
             >
-              {/* Content Side */}
-              <div className="flex-1 lg:max-w-xl">
-                <div className="card-premium group hover:shadow-premium transition-all duration-500">
-                  {/* Icon */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`p-4 rounded-2xl bg-gradient-to-br ${sector.color} text-white shadow-glow group-hover:scale-110 transition-transform duration-500`}>
-                      {sector.icon}
-                    </div>
-                    <h3 className="text-3xl font-bold text-nexflow-dark group-hover:text-nexflow-purple transition-colors duration-300">
-                      {sector.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                    {sector.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-8">
-                    <div className="flex flex-wrap gap-3">
-                      {sector.features.map((feature, idx) => (
-                        <div
-                          key={idx}
-                          className={`px-4 py-2 bg-gradient-to-r ${sector.color} text-white text-sm font-semibold rounded-full shadow-md transform hover:scale-105 transition-all duration-300`}
-                        >
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className={`transition-all duration-500 ${
-                    hoveredSector === index ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-2'
-                  }`}>
-                    <button className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${sector.color} text-white rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-premium`}>
-                      Ver casos de éxito
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
+              {/* Popular badge */}
+              {pack.highlighted && (
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span className="px-4 py-1.5 text-[11px] font-bold tracking-widest text-white bg-gradient-to-r from-purple-500 to-pink-500 rounded-full uppercase">
+                    Más popular
+                  </span>
                 </div>
+              )}
+
+              {/* Icon */}
+              <div
+                className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${pack.gradient} text-white mb-5 w-fit`}
+              >
+                {pack.icon}
               </div>
 
-              {/* Image Side */}
-              <div className="flex-1 lg:max-w-xl">
-                <div className="relative group">
-                  {/* Main Image */}
-                  <div 
-                    className="relative overflow-hidden rounded-3xl shadow-card group-hover:shadow-premium transition-all duration-500"
-                    style={{
-                      backgroundImage: `url(${sector.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      height: "400px",
-                    }}
-                  >
-                    {/* Gradient Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${sector.color} opacity-20 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                    
-                    {/* Floating Elements */}
-                    <div className="absolute top-4 right-4">
-                      <div className={`w-3 h-3 bg-gradient-to-r ${sector.color} rounded-full animate-pulse`}></div>
-                    </div>
-                    <div className="absolute bottom-4 left-4">
-                      <div className={`w-2 h-2 bg-gradient-to-r ${sector.color} rounded-full animate-glow`}></div>
-                    </div>
-                  </div>
-
-                  {/* Decorative Elements */}
-                  <div className={`absolute -top-3 -right-3 w-24 h-24 bg-gradient-to-br ${sector.color} opacity-20 rounded-full blur-xl group-hover:opacity-30 transition-opacity duration-500`}></div>
-                  <div className={`absolute -bottom-3 -left-3 w-20 h-20 bg-gradient-to-br ${sector.color} opacity-15 rounded-full blur-lg group-hover:opacity-25 transition-opacity duration-700`}></div>
-                </div>
+              {/* Name + price */}
+              <h3 className="text-white font-black text-2xl mb-1">{pack.name}</h3>
+              <div className="mb-1">
+                <span className="text-white/40 text-sm">{pack.priceLabel} </span>
+                <span className="text-3xl font-black text-gradient">{pack.price}</span>
               </div>
+              <p className="text-white/35 text-xs font-semibold uppercase tracking-wider mb-2">
+                {pack.tagline}
+              </p>
+              <p className="text-white/50 text-sm leading-relaxed mb-7">
+                {pack.description}
+              </p>
+
+              {/* Features */}
+              <ul className="space-y-3 mb-8 flex-grow">
+                {pack.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2.5 text-sm">
+                    <Check
+                      size={15}
+                      className="text-purple-400 mt-0.5 flex-shrink-0"
+                    />
+                    <span className="text-white/65">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <button
+                onClick={scrollToForm}
+                className={`w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 group ${
+                  pack.highlighted
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90 hover:scale-[1.01]"
+                    : "border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20"
+                }`}
+              >
+                {pack.cta}
+                <ArrowRight
+                  size={15}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </button>
             </div>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-20">
-          <div className="bg-gradient-to-br from-nexflow-purple/5 to-nexflow-pink/5 rounded-3xl p-12 border border-nexflow-purple/10">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <TrendingUp className="text-nexflow-purple" size={28} />
-              <h3 className="text-2xl font-bold text-nexflow-dark">
-                ¿No encuentras tu sector?
-              </h3>
-            </div>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Estas son algunas de las tareas que automatizamos con IA. Si no ves tu caso aquí no te preocupes, 
-              <strong> diseñamos un flujo de trabajo a medida para tu empresa.</strong>
-            </p>
-            <a
-              href="https://wa.me/34622064070?text=Hola,%20estoy%20interesado%20en%20vuestros%20servicios%20de%20automatización%20con%20IA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-hero inline-flex items-center gap-2"
-            >
-              <MessageCircle size={18} />
-              Consulta tu caso específico
-              <ArrowRight size={18} />
-            </a>
-          </div>
-        </div>
+        <p className="text-center text-white/28 text-sm mt-8">
+          ¿Dudas sobre qué pack encaja mejor? El diagnóstico gratuito te lo
+          aclara.
+        </p>
       </div>
     </section>
   );
 };
 
-export default SectorsSection;
+export default PacksSection;
